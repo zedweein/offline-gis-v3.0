@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>Offline-GisDemo</title>
+<style>
+body, html, #container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+#select-map {
+	position: absolute;
+	top: 2%;
+	left: 1%;
+	height: 30px;
+	width: 90px;
+	border: 1px solid #b70800;
+}
+</style>
+<script type="text/javascript" src="offline-gis-v3.0/conf.bmap.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/javascript">
+		var map = new BMap.Map("container");
+		map.centerAndZoom(new BMap.Point(121.3084, 31.196105), 16);
+		map.enableScrollWheelZoom();
+
+		map.addControl(new BMap.MapTypeControl({
+			mapTypes : [BMAP_NORMAL_MAP, BMAP_SATELLITE_MAP, BMAP_HYBRID_MAP]
+		}));
+
+		var jsonMap = [{
+			"featureType" : "water",
+			"elementType" : "all",
+			"stylers" : {
+				"color" : "#021019"
+			}
+		}, {
+			"featureType" : "highway",
+			"elementType" : "geometry.fill",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "highway",
+			"elementType" : "geometry.stroke",
+			"stylers" : {
+				"color" : "#147a92"
+			}
+		}, {
+			"featureType" : "arterial",
+			"elementType" : "geometry.fill",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "arterial",
+			"elementType" : "geometry.stroke",
+			"stylers" : {
+				"color" : "#0b3d51"
+			}
+		}, {
+			"featureType" : "local",
+			"elementType" : "geometry",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "land",
+			"elementType" : "all",
+			"stylers" : {
+				"color" : "#08304b"
+			}
+		}, {
+			"featureType" : "railway",
+			"elementType" : "geometry.fill",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "railway",
+			"elementType" : "geometry.stroke",
+			"stylers" : {
+				"color" : "#08304b"
+			}
+		}, {
+			"featureType" : "subway",
+			"elementType" : "geometry",
+			"stylers" : {
+				"lightness" : -70
+			}
+		}, {
+			"featureType" : "building",
+			"elementType" : "geometry.fill",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "all",
+			"elementType" : "labels.text.fill",
+			"stylers" : {
+				"color" : "#857f7f"
+			}
+		}, {
+			"featureType" : "all",
+			"elementType" : "labels.text.stroke",
+			"stylers" : {
+				"color" : "#000000"
+			}
+		}, {
+			"featureType" : "building",
+			"elementType" : "geometry",
+			"stylers" : {
+				"color" : "#022338"
+			}
+		}, {
+			"featureType" : "green",
+			"elementType" : "geometry",
+			"stylers" : {
+				"color" : "#062032"
+			}
+		}, {
+			"featureType" : "boundary",
+			"elementType" : "all",
+			"stylers" : {
+				"color" : "#1e1c1c"
+			}
+		}, {
+			"featureType" : "manmade",
+			"elementType" : "geometry",
+			"stylers" : {
+				"color" : "#022338"
+			}
+		}, {
+			"featureType" : "poi",
+			"elementType" : "all",
+			"stylers" : {
+				"visibility" : "off"
+			}
+		}, {
+			"featureType" : "all",
+			"elementType" : "labels.icon",
+			"stylers" : {
+				"visibility" : "off"
+			}
+		}, {
+			"featureType" : "all",
+			"elementType" : "labels.text.fill",
+			"stylers" : {
+				"color" : "#2da0c6",
+				"visibility" : "on"
+			}
+		}];
+		map.setMapStyle({
+			styleJson : jsonMap
+		});
+	</script>
+</body>
+</html>
